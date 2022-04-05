@@ -43,13 +43,19 @@ p2_scatter <- cv_states_today_scatter %>%
          hovermode = "compare")
 ```
 
-# First Plot
+# Set of Plots {.tabset}
+
+## First Plot
 ```{r}
 p1_scatter
 ```
 
-# Second Plot
+## Second Plot
 ```{r}
 p2_scatter
 ```
+
+# More Information
+
+No More Information
 

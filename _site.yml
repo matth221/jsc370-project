@@ -1,5 +1,5 @@
 name: "my jsc370 project"
-output_dir: "."
+output_dir: "docs"
 navbar:
   title: "JSC370 Final Project"
   left:

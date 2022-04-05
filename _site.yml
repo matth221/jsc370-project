@@ -7,6 +7,8 @@ navbar:
       href: index.html
     - text: "Second Page!"
       href: page2.html
+    - text: "Third Page!"
+      href: page3.html
   right:
     - icon: fa-github fa-lg
       href: https://github.com/JSC370/jsc370-2022/

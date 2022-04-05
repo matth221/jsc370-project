@@ -1,22 +1,74 @@
 ---
-title: "Second Page"
+title: "JSC370 Final Project"
 author: "Christopher Matthew"
-date: "4/5/2022"
 output: 
-  html_document:
-    toc: True
-    toc_float: True
+    html_document:
+        toc: TRUE
+        toc_float: TRUE
 ---
 
-```{r}
+<br>
+
+This is my JSC370 Final Project website. I will showcase a few interactive visuals here.
+
+<br>
+
+```{r setup, message=FALSE, echo=FALSE, warning=FALSE}
+
+library(data.table)
+library(tidyverse)
 library(dplyr)
-source("process_COVID_data.R")
-head(cv_states_today)
+library(plotly)
+library(DT)
+library(knitr)
+
+# Initialize code chunk options
+opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  eval=TRUE,
+  echo = TRUE,
+  cache = FALSE,
+  fig.width = 7, 
+  fig.align = 'center',
+  fig.asp = 0.618,
+  out.width = "700px",
+  class.source = "code-r")
 ```
 
+```{css, echo = FALSE}
+.code-r { /* Code block */
+  font-size: 15px;
+}
+
+.code-r-small { /* Code block */
+  font-size: 10px;
+}
+```
+
+<br>
+
+## First step
+
+First I will source any necessary code, e.g. `process_covid_data.R`:
+
+```{r load-data}
+fn <- "https://raw.githubusercontent.com/JSC370/jsc370-2022/main/labs/lab12/process_COVID_data.R"
+if (!file.exists("process_COVID_data.R"))
+  download.file(fn, destfile = "process_COVID_data.R")
+source("process_COVID_data.R")
+```
+
+<br>
+
+## Second step
+
+Then I will add some code to create the **plotly** figures
+
+Note: You need to name each code chunk, like this one: `plot1`
 
 ```{r plot1, class.source="code-r-small"}
-library(plotly)
+
 p1_scatter <- cv_states_today %>% 
   plot_ly(x = ~pop_density, y = ~deathsper100k,
           type = 'scatter', mode = 'markers', color = ~state,
@@ -43,13 +95,29 @@ p2_scatter <- cv_states_today_scatter %>%
          hovermode = "compare")
 ```
 
-# First Plot
-```{r}
+<br>
+
+## Third step {.tabset}
+
+Create tabs to display each figure
+
+### Scatterplot: with DC
+
+```{r p1}
 p1_scatter
 ```
 
-# Second Plot
-```{r}
+### Scatterplot: without DC
+
+```{r p2}
 p2_scatter
 ```
 
+## {-}
+
+<br>
+
+Done!
+
+<br>
+<br>
